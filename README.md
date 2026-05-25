@@ -1,7 +1,7 @@
 # Proyecto de Django
 
 ## Introducción
-Este es un proyecto sencillo en el que he usado el framework Django para crear una web de blogs sobre programación. La idea es que sea un sitio donde cualquiera pueda entrar a echar un vistazo a noticias del sector o seguir algunos tutoriales prácticos.
+Este es un proyecto en el que he usado el framework Django para crear una web de blogs sobre programación. La idea es que sea un sitio donde cualquiera pueda entrar a echar un vistazo a noticias del sector o seguir algunos tutoriales prácticos.
 
 ## Instal·lación ràpida
 1. Inicie una terminal y ejecute el siguiente comando para clonar el repositorio del proyecto:
