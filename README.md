@@ -1,20 +1,28 @@
 # Projecte de Django
 
 ## Introducció
-Aquest és un projecte per fer una aplicació web utilitzant el framework Django, on el principal objectiu de la web és una xarxa de blogs de programació, on pots veure diferents notícies i tutorials.
+Este es un proyecto sencillo en el que he usado el framework Django para crear una web de blogs sobre programación. La idea es que sea un sitio donde cualquiera pueda entrar a echar un vistazo a noticias del sector o seguir algunos tutoriales prácticos.
 
 ## Instal·lació ràpida
-1. Primer hem d'obrir el terminal i clonar el repositori amb la comanda:
+1. Inicie una terminal y ejecute el siguiente comando para clonar el repositorio del proyecto:
    `git clone https://github.com/iria-ceta/Django-2.git`
-2. Després entrem dins amb la comanda `cd my_site`
-3. Ara preparem un entorn virtual amb la comanda `python -m venv env_site`
-4. Activem l'entorn virtual amb la comanda `.\env_site\Scripts\activate.ps1`
-5. Després instal·lem les dependències necessàries amb `python -m pip install django`
-6. Abans d'iniciar el servidor, hem d'aplicar les migracions a la base de dades amb `python manage.py makemigrations` i `python manage.py migrate`
+2. Navegue al directorio principal del proyecto utilizando el comando:
+   `cd my_site`
+4. Es recomendable crear un entorno virtual para gestionar las dependencias del proyecto de forma aislada. Utilice el siguiente comando:
+   `python -m venv env_site`
+5. Active el entorno virtual recién creado con la siguiente instrucción:
+   `.\env_site\Scripts\activate.ps1`
+6. Instale las librerías necesarias para el proyecto, incluyendo Django, mediante el comando:
+   `python -m pip install django`
+7. Antes de iniciar el servidor, es fundamental aplicar las migraciones para configurar la base de datos. Ejecute los siguientes comandos en secuencia:
+   `python  manage.py makemigrations` 
+   `python manage.py migrate`
 
 ## Execució del projecte
-1. Per últim, utilitzem `python manage.py runserver` per activar l'aplicació web.
-2. Podrem accedir a través de l'URL `http://127.0.0.1:8000`
+1. Active el servidor de desarrollo de Django con el comando:
+   `python manage.py runserver` 
+3. La aplicación estará accesible a través de su navegador web en la siguiente dirección:
+   `http://127.0.0.1:8000`
 
 ## Pydocs
 1. Views.py: https://iria-ceta.github.io/Django-2/blog.views.html
