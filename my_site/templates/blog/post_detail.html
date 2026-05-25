@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="bg-white p-5 rounded shadow-sm">
+    <h1 class="display-4 mb-2">{{ post.title }}</h1>
+    <p class="text-muted">Per <strong>{{ post.author }}</strong> el {{ post.date }}</p>
+    
+    <div class="mb-4">
+        {% for tag in post_tags %}
+        <a href="{% url 'tag-detail-page' tag.id %}" class="badge bg-secondary text-decoration-none me-1">#{{ tag.caption }}</a>
+        {% endfor %}
+    </div>
+
+    <p class="lead text-secondary border-start border-4 ps-3 my-4" style="font-style: italic;">
+        {{ post.excerpt }}
+    </p>
+    
+    <div class="my-4" style="white-space: pre-line;">
+        {{ post.content }}
+    </div>
+    
+    <a href="{% url 'posts-page' %}" class="btn btn-dark mt-4">← Tornar a tots els posts</a>
+</article>
+{% endblock %}

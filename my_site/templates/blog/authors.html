@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Autors del Blog{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Llistat d'Autors</h1>
+<ul class="list-group shadow-sm">
+    {% for author in authors %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{ author.first_name }} {{ author.last_name }}</strong> — <span class="text-muted">{{ author.email_address }}</span>
+        </div>
+        <a href="{% url 'author-detail-page' author.id %}" class="btn btn-sm btn-primary">Veure Perfil</a>
+    </li>
+    {% empty %}
+    <li class="list-group-item">No hi ha autors creats encara.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

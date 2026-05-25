@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Posts amb Tag #{{ tag.caption }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Posts associats a la tag: <span class="badge bg-dark">#{{ tag.caption }}</span></h2>
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>{{ post.title }}</h5>
+                <p class="text-muted small">Per {{ post.author }}</p>
+                <p>{{ post.excerpt }}</p>
+                <a href="{% url 'post-detail-page' post.slug %}" class="btn btn-sm btn-secondary">Veure publicació</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No hi ha posts associats amb aquesta tag.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil de {{ author }}{% endblock %}
+
+{% block content %}
+<div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h2>Autor: {{ author.first_name }} {{ author.last_name }}</h2>
+    <p class="text-muted">Email: {{ author.email_address }}</p>
+</div>
+
+<h3 class="mb-3">Posts publicats per aquest autor:</h3>
+<div class="list-group shadow-sm">
+    {% for post in posts %}
+    <a href="{% url 'post-detail-page' post.slug %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ post.title }}</h5>
+            <small class="text-muted">{{ post.date }}</small>
+        </div>
+        <p class="mb-1 text-muted">{{ post.excerpt }}</p>
+    </a>
+    {% empty %}
+    <p class="text-muted">Aquest autor encara no té cap post publicat.</p>
+    {% endfor %}
+</div>
+{% endblock %}

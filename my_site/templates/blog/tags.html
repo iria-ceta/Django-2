@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Llistat de Tags</h1>
+<div class="d-flex flex-wrap gap-2">
+    {% for tag in tags %}
+    <a href="{% url 'tag-detail-page' tag.id %}" class="btn btn-outline-dark p-3 fs-5 rounded shadow-sm">
+        #{{ tag.caption }}
+    </a>
+    {% empty %}
+    <p>No hi ha tags creades.</p>
+    {% endfor %}
+</div>
+{% endblock %}
