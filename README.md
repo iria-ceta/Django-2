@@ -1,9 +1,9 @@
-# Projecte de Django
+# Proyecto de Django
 
-## Introducció
+## Introducción
 Este es un proyecto sencillo en el que he usado el framework Django para crear una web de blogs sobre programación. La idea es que sea un sitio donde cualquiera pueda entrar a echar un vistazo a noticias del sector o seguir algunos tutoriales prácticos.
 
-## Instal·lació ràpida
+## Instal·lación ràpida
 1. Inicie una terminal y ejecute el siguiente comando para clonar el repositorio del proyecto:
    `git clone https://github.com/iria-ceta/Django-2.git`
 2. Navegue al directorio principal del proyecto utilizando el comando:
@@ -18,7 +18,7 @@ Este es un proyecto sencillo en el que he usado el framework Django para crear u
    `python  manage.py makemigrations` 
    `python manage.py migrate`
 
-## Execució del projecte
+## Execución del proyecto
 1. Active el servidor de desarrollo de Django con el comando:
    `python manage.py runserver` 
 3. La aplicación estará accesible a través de su navegador web en la siguiente dirección:
