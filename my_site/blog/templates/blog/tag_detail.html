@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{ tag.tag_name }}
+{% endblock %}
+
+{% block content %}
+    <div class="last-posts">
+        <h1>Posts amb el tag: <a href="{% url 'tag-list-page' %}" class="tag-return">{{ tag.tag_name }}</a></h1>
+        <div class="posts-container">
+            {% for post in tag.posts.all %}
+                <a href="{% url 'post-detail-page' post.slug %}" class="post-link">
+                    <div class="post-preview">
+                        {% if post.imatge %}
+                            <img src="{{ post.imatge.url }}" alt="{{ post.titulo }}" class="preview-image">
+                        {% endif %}
+                        <h3>{{ post.titulo }}</h3>
+                        <p>{{ post.contingut|truncatechars:120 }}</p>
+                    </div>
+                </a>
+            {% empty %}
+                <p>Encara no s'ha publicat cap post.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
