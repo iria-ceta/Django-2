@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{ post.titulo }}
+{% endblock %}
+
+{% block content %}
+    <article class="post-detail-content">
+        <h1>{{ post.titulo }}</h1>
+        
+        <p class="post-meta">
+            Publicat el {{ post.data_publicacio|date:"d M Y" }} 
+            {% if post.author %}
+                per <a href="{% url 'author-detail-page' post.author.id %}">{{ post.author.name }} {{ post.author.apellido }}</a>
+            {% endif %}
+        </p>
+
+        {% if post.imatge %}
+            <img src="{{ post.imatge.url }}" alt="{{ post.titulo }}" class="post-image">
+        {% endif %}
+
+        <div class="post-text">
+            {{ post.contingut|linebreaks }}
+        </div>
+    </article>
+
+    <div class="tags-section">
+        <h1>Etiquetes</h1>
+        <div class="tags-container">
+            {% for tag in post.tags.all %}
+                <a href="{% url 'tag-detail-page' tag.id %}" class="tag-link">
+                    <span class="tag">{{ tag.tag_name }}</span>
+                </a>
+            {% empty %}
+                <p>Aquest post no té etiquetes associades.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+
+
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Tags
+{% endblock %}
+
+{% block content %}
+    <div class="tags">
+        <h1>Els Tags</h1>
+        {% for tag in tags %}
+            <a href="{% url 'tag-detail-page' tag.id %}">
+                <span class="tag">{{ tag.tag_name }}</span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
