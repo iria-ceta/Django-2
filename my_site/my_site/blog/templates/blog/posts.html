@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Els Posts
+{% endblock %}
+
+{% block content %}
+    <div class="last-posts">
+        <h1>Posts del Blog</h1>
+        
+        <div class="posts-container">
+            {% for post in posts %}
+                <a href="{% url 'post-detail-page' post.slug %}" class="post-link">
+                    <div class="post-preview">
+                        {% if post.imatge %}
+                            <img src="{{ post.imatge.url }}" alt="{{ post.titulo }}" class="preview-image">
+                        {% endif %}
+                        <h3>{{ post.titulo }}</h3>
+                        <p>{{ post.contingut|truncatechars:120 }}</p>
+                    </div>
+                </a>
+            {% empty %}
+                <p>Encara no s'ha publicat cap post.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
