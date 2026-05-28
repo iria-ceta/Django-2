@@ -25,19 +25,19 @@ SECRET_KEY = 'django-insecure--ep20d864(wnbf@nw@h@$h7-kx0awuvxh2-sd7(-)mw3nnp-hu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
     
 ]
 
@@ -118,5 +118,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / "blog" / 'static'
 ]
+# URL con la que el navegador cargará las fotos (ej: http://127.0.0.1:8000/media/posts_images/gato.jpg)
+MEDIA_URL = '/media/'
+
+# Ruta física en tu ordenador donde Django creará la carpeta y guardará los archivos subidos
+MEDIA_ROOT = BASE_DIR / 'media'
