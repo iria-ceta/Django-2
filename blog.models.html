@@ -41,7 +41,7 @@
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Author">Author</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Author">Author</a>(id,&nbsp;first_name,&nbsp;last_name,&nbsp;email_address)<br>&nbsp;</span></td></tr>
+<a href="#Author">Author</a>(id,&nbsp;name,&nbsp;apellido,&nbsp;email)<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Author">Author</a></dd>
@@ -53,10 +53,10 @@
 Methods defined here:<br>
 <dl><dt><a name="Author-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
 
-<strong>email_address</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>first_name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>apellido</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>email</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>id</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>last_name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <hr>
 Data descriptors defined here:<br>
 <dl><dt><strong>posts</strong></dt>
@@ -193,7 +193,7 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Post">Post</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Post">Post</a>(id,&nbsp;title,&nbsp;excerpt,&nbsp;image_name,&nbsp;date,&nbsp;slug,&nbsp;content,&nbsp;author)<br>&nbsp;</span></td></tr>
+<a href="#Post">Post</a>(id,&nbsp;titulo,&nbsp;contingut,&nbsp;imatge,&nbsp;data_publicacio,&nbsp;author,&nbsp;slug)<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Post">Post</a></dd>
@@ -205,22 +205,24 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 Methods defined here:<br>
 <dl><dt><a name="Post-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
 
-<strong>content</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>date</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>excerpt</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<dl><dt><a name="Post-get_next_by_date"><strong>get_next_by_date</strong></a> = _method(self, *, field=&lt;django.db.models.fields.DateField: date&gt;, is_next=True, **kwargs)<span class="grey"><span class="heading-text"> from functools.partialmethod._make_unbound_method.<locals></span></span></dt></dl>
+<strong>contingut</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>data_publicacio</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<dl><dt><a name="Post-get_next_by_data_publicacio"><strong>get_next_by_data_publicacio</strong></a> = _method(self, *, field=&lt;django.db.models.fields.DateTimeField: data_publicacio&gt;, is_next=True, **kwargs)<span class="grey"><span class="heading-text"> from functools.partialmethod._make_unbound_method.<locals></span></span></dt></dl>
 
-<dl><dt><a name="Post-get_previous_by_date"><strong>get_previous_by_date</strong></a> = _method(self, *, field=&lt;django.db.models.fields.DateField: date&gt;, is_next=False, **kwargs)<span class="grey"><span class="heading-text"> from functools.partialmethod._make_unbound_method.<locals></span></span></dt></dl>
+<dl><dt><a name="Post-get_previous_by_data_publicacio"><strong>get_previous_by_data_publicacio</strong></a> = _method(self, *, field=&lt;django.db.models.fields.DateTimeField: data_publicacio&gt;, is_next=False, **kwargs)<span class="grey"><span class="heading-text"> from functools.partialmethod._make_unbound_method.<locals></span></span></dt></dl>
 
 <strong>id</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>image_name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<dl><dt><a name="Post-save"><strong>save</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Genera&nbsp;el&nbsp;slug&nbsp;automàticament&nbsp;a&nbsp;partir&nbsp;del&nbsp;títol&nbsp;abans&nbsp;de&nbsp;desar.</span></dd></dl>
+
 <strong>slug</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<strong>title</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>titulo</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <hr>
 Data descriptors defined here:<br>
 <dl><dt><strong>author</strong></dt>
 </dl>
 <dl><dt><strong>author_id</strong></dt>
+</dl>
+<dl><dt><strong>imatge</strong></dt>
 </dl>
 <dl><dt><strong>tags</strong></dt>
 </dl>
@@ -292,13 +294,6 @@ all&nbsp;non-deferred&nbsp;fields&nbsp;are&nbsp;reloaded.<br>
 When&nbsp;accessing&nbsp;deferred&nbsp;fields&nbsp;of&nbsp;an&nbsp;instance,&nbsp;the&nbsp;deferred&nbsp;loading<br>
 of&nbsp;the&nbsp;field&nbsp;will&nbsp;call&nbsp;this&nbsp;method.</span></dd></dl>
 
-<dl><dt><a name="Post-save"><strong>save</strong></a>(self, *args, force_insert=False, force_update=False, using=None, update_fields=None)</dt><dd><span class="code">Save&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
-control&nbsp;the&nbsp;saving&nbsp;process.<br>
-&nbsp;<br>
-The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
-that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
-non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</span></dd></dl>
-
 <dl><dt><a name="Post-save_base"><strong>save_base</strong></a>(self, raw=False, force_insert=False, force_update=False, using=None, update_fields=None)</dt><dd><span class="code">Handle&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
 yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
 checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
@@ -356,7 +351,7 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Tag">Tag</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Tag">Tag</a>(id,&nbsp;caption)<br>&nbsp;</span></td></tr>
+<a href="#Tag">Tag</a>(id,&nbsp;tag_name)<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Tag">Tag</a></dd>
@@ -368,8 +363,8 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 Methods defined here:<br>
 <dl><dt><a name="Tag-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
 
-<strong>caption</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>id</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
+<strong>tag_name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <hr>
 Data descriptors defined here:<br>
 <dl><dt><strong>posts</strong></dt>
