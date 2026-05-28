@@ -9,7 +9,8 @@
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title"><a href="blog.html" class="white">blog</a>.models</strong></td>
 <td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/Django-2/Django-2/my_site/blog/models.py">/home/runner/work/Django-2/Django-2/my_site/blog/models.py</a></td></tr></table>
-    <p></p>
+    <p><span class="code">Definició&nbsp;dels&nbsp;models&nbsp;de&nbsp;dades&nbsp;de&nbsp;l'aplicació.<br>
+Estructura&nbsp;les&nbsp;taules&nbsp;<a href="#Author">Author</a>,&nbsp;<a href="#Tag">Tag</a>&nbsp;i&nbsp;<a href="#Post">Post</a>&nbsp;utilitzant&nbsp;l'ORM&nbsp;de&nbsp;Django.</span></p>
 <p>
 <table class="section">
 <tr class="decor pkg-content-decor heading-text">
@@ -41,7 +42,12 @@
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Author">Author</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Author">Author</a>(id,&nbsp;name,&nbsp;apellido,&nbsp;email)<br>&nbsp;</span></td></tr>
+Representa&nbsp;un&nbsp;autor&nbsp;del&nbsp;blog&nbsp;amb&nbsp;la&nbsp;seva&nbsp;informació&nbsp;de&nbsp;contacte.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;Nom&nbsp;de&nbsp;l'autor.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;apellido&nbsp;(str):&nbsp;Cognom&nbsp;de&nbsp;l'autor.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;email&nbsp;(str):&nbsp;Correu&nbsp;electrònic&nbsp;de&nbsp;contacte.<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Author">Author</a></dd>
@@ -51,7 +57,7 @@
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Author-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+<dl><dt><a name="Author-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Retorna&nbsp;el&nbsp;nom&nbsp;complet&nbsp;de&nbsp;l'autor&nbsp;per&nbsp;a&nbsp;la&nbsp;seva&nbsp;representació&nbsp;en&nbsp;text.</span></dd></dl>
 
 <strong>apellido</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>email</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
@@ -193,7 +199,16 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Post">Post</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Post">Post</a>(id,&nbsp;titulo,&nbsp;contingut,&nbsp;imatge,&nbsp;data_publicacio,&nbsp;author,&nbsp;slug)<br>&nbsp;</span></td></tr>
+Representa&nbsp;una&nbsp;publicació&nbsp;o&nbsp;article&nbsp;individual&nbsp;dins&nbsp;del&nbsp;blog.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;titulo&nbsp;(str):&nbsp;Títol&nbsp;de&nbsp;l'article.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;contingut&nbsp;(str):&nbsp;Text&nbsp;o&nbsp;cos&nbsp;principal&nbsp;de&nbsp;la&nbsp;publicació.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;imatge&nbsp;(File):&nbsp;Arxiu&nbsp;d'imatge&nbsp;adjunt&nbsp;a&nbsp;la&nbsp;publicació&nbsp;(opcional).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_publicacio&nbsp;(datetime):&nbsp;Data&nbsp;i&nbsp;hora&nbsp;de&nbsp;creació&nbsp;automàtica&nbsp;del&nbsp;post.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;(<a href="#Author">Author</a>):&nbsp;Relació&nbsp;de&nbsp;clau&nbsp;forana&nbsp;(1-a-Molts)&nbsp;amb&nbsp;el&nbsp;model&nbsp;<a href="#Author">Author</a>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tags&nbsp;(ManyToManyField):&nbsp;Relació&nbsp;(Molts-a-Molts)&nbsp;amb&nbsp;el&nbsp;model&nbsp;<a href="#Tag">Tag</a>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;slug&nbsp;(str):&nbsp;Text&nbsp;de&nbsp;la&nbsp;URL&nbsp;amigable&nbsp;generada&nbsp;per&nbsp;al&nbsp;SEO.<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Post">Post</a></dd>
@@ -203,7 +218,7 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Post-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+<dl><dt><a name="Post-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Retorna&nbsp;el&nbsp;títol&nbsp;de&nbsp;l'article&nbsp;per&nbsp;a&nbsp;la&nbsp;seva&nbsp;representació&nbsp;en&nbsp;text.</span></dd></dl>
 
 <strong>contingut</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>data_publicacio</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
@@ -212,7 +227,9 @@ Methods defined here:<br>
 <dl><dt><a name="Post-get_previous_by_data_publicacio"><strong>get_previous_by_data_publicacio</strong></a> = _method(self, *, field=&lt;django.db.models.fields.DateTimeField: data_publicacio&gt;, is_next=False, **kwargs)<span class="grey"><span class="heading-text"> from functools.partialmethod._make_unbound_method.<locals></span></span></dt></dl>
 
 <strong>id</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
-<dl><dt><a name="Post-save"><strong>save</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Genera&nbsp;el&nbsp;slug&nbsp;automàticament&nbsp;a&nbsp;partir&nbsp;del&nbsp;títol&nbsp;abans&nbsp;de&nbsp;desar.</span></dd></dl>
+<dl><dt><a name="Post-save"><strong>save</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Genera&nbsp;el&nbsp;slug&nbsp;automàticament&nbsp;a&nbsp;partir&nbsp;del&nbsp;títol&nbsp;abans&nbsp;de&nbsp;desar&nbsp;el&nbsp;registre.<br>
+&nbsp;<br>
+Neteja&nbsp;el&nbsp;text&nbsp;convertint&nbsp;majúscules&nbsp;en&nbsp;minúscules&nbsp;i&nbsp;substituint&nbsp;espais&nbsp;per&nbsp;guions.</span></dd></dl>
 
 <strong>slug</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>titulo</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
@@ -351,7 +368,10 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#Tag">Tag</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<a href="#Tag">Tag</a>(id,&nbsp;tag_name)<br>&nbsp;</span></td></tr>
+Representa&nbsp;una&nbsp;etiqueta&nbsp;o&nbsp;tag&nbsp;utilitzada&nbsp;per&nbsp;classificar&nbsp;els&nbsp;posts.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tag_name&nbsp;(str):&nbsp;Nom&nbsp;de&nbsp;l'etiqueta&nbsp;de&nbsp;classificació.<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.models.html#Tag">Tag</a></dd>
@@ -361,7 +381,7 @@ Data descriptors inherited from <a href="django.db.models.utils.html#AltersData"
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Tag-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+<dl><dt><a name="Tag-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Retorna&nbsp;el&nbsp;nom&nbsp;de&nbsp;l'etiqueta&nbsp;per&nbsp;a&nbsp;la&nbsp;seva&nbsp;representació&nbsp;en&nbsp;text.</span></dd></dl>
 
 <strong>id</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
 <strong>tag_name</strong> = &lt;django.db.models.query_utils.DeferredAttribute object&gt;
